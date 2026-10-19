@@ -1,1 +1,1 @@
-window.WC_CONFIG = {"API_URL":"http://localhost:5000/api","OWNER_URL":"http://localhost:5501","GA_ID":""};
+window.WC_CONFIG = {"API_URL":"https://whimsycharm.vercel.app/api","OWNER_URL":"https://whimsycharm-owner.vercel.app","GA_ID":""};

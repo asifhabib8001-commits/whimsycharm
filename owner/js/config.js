@@ -1,1 +1,1 @@
-window.WCO = {"API_URL":"http://localhost:5000/api","SITE_URL":"http://localhost:5500"};
+window.WCO = {"API_URL":"https://whimsycharm.vercel.app/api","SITE_URL":"https://whimsycharm-frontend.vercel.app"};
