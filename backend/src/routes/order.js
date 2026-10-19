@@ -1,0 +1,12 @@
+const router = require("express").Router();
+const c = require('../controllers/order');
+const { protect, ownerOnly } = require('../middleware/auth');
+router.post('/quote', c.quote);
+router.post('/', protect, c.create);
+router.get('/my', protect, c.myOrders);
+router.get('/admin/all', ownerOnly, c.adminList);
+router.put('/admin/:id/status', ownerOnly, c.adminUpdateStatus);
+router.get('/:id', protect, c.getOne);
+router.put('/:id/cancel', protect, c.cancel);
+router.get('/:id/invoice', protect, c.invoice);
+module.exports = router;

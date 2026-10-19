@@ -1,0 +1,11 @@
+const router = require("express").Router();
+const c = require('../controllers/product');
+const { ownerOnly } = require('../middleware/auth');
+router.get('/', c.list);
+router.get('/admin/all', ownerOnly, c.adminList);
+router.post('/', ownerOnly, c.create);
+router.get('/:idOrSlug/related', c.related);
+router.get('/:idOrSlug', c.get);
+router.put('/:id', ownerOnly, c.update);
+router.delete('/:id', ownerOnly, c.remove);
+module.exports = router;

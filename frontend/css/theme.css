@@ -1,0 +1,21 @@
+/* WhimsyCharm — design tokens (gold / warm white / lavender) */
+:root{
+  --gold-700:#8a650c;--gold-600:#a98314;--gold-500:#c9a227;--gold-400:#dbbb4f;--gold-300:#e9d58f;--gold-200:#f4e9c4;--gold-100:#fbf5e0;
+  --lav-50:#faf7fd;--lav-100:#f1eafa;--lav-200:#e3d6f4;--lav-300:#cdb8ec;--lav-500:#9677cc;--lav-600:#7a5cb5;--lav-700:#5f4592;
+  --bg:#fffdf9;--bg-alt:#faf7fd;--surface:#fff;--ink:#2a2331;--ink-2:#4a4256;--muted:#6f6679;--border:#ebe3f2;
+  --ok:#2e7d5b;--warn:#b7791f;--danger:#c0392b;
+  --grad-gold:linear-gradient(135deg,#b88f1c 0%,#e7c95f 48%,#c9a227 100%);
+  --grad-soft:linear-gradient(180deg,var(--lav-50),var(--bg));
+  --font-head:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --font-body:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --fs-xs:.78rem;--fs-sm:.9rem;--fs-md:1rem;--fs-lg:1.22rem;--fs-xl:1.65rem;--fs-2xl:2.1rem;--fs-3xl:2.7rem;
+  --s-1:.25rem;--s-2:.5rem;--s-3:.75rem;--s-4:1rem;--s-5:1.5rem;--s-6:2rem;--s-7:3rem;--s-8:4.5rem;
+  --r-sm:8px;--r-md:14px;--r-lg:22px;--r-pill:999px;
+  --sh-sm:0 1px 3px rgba(60,40,90,.08);--sh-md:0 8px 24px rgba(60,40,90,.10);--sh-lg:0 18px 48px rgba(60,40,90,.14);
+  --header-h:64px;--maxw:1200px;--ease:cubic-bezier(.2,.7,.2,1);color-scheme:light;
+}
+[data-theme=dark]{
+  --bg:#15111b;--bg-alt:#1b1624;--surface:#201a2a;--ink:#f4eff9;--ink-2:#d6cde2;--muted:#a99fb8;--border:#382f47;
+  --lav-50:#1b1624;--lav-100:#2a2237;--lav-200:#3a2f4d;--lav-600:#b9a1e6;--lav-700:#cdb8ec;--gold-100:#2b2512;--gold-200:#3a3218;--gold-700:#e9d58f;
+  --sh-sm:0 1px 3px rgba(0,0,0,.4);--sh-md:0 8px 24px rgba(0,0,0,.4);--sh-lg:0 18px 48px rgba(0,0,0,.5);color-scheme:dark;
+}

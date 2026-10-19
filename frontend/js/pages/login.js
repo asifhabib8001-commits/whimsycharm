@@ -1,0 +1,12 @@
+(async () => {
+  await Settings.applyPage('login', 'Login');
+  const next = UI.qs('next') || 'index.html'; if (Auth.loggedIn) return (location.href = next);
+  UI.mount(`<div class="auth-wrap"><div class="auth-card"><h1 class="center">Welcome</h1><div class="tabs" role="tablist"><button class="active" data-t="in" role="tab">Login</button><button data-t="up" role="tab">Sign up</button></div><div id="m"></div>
+  <form id="in"><div class="field"><label for="le">Email</label><input id="le" type="email" autocomplete="email" required></div><div class="field"><label for="lp">Password</label><input id="lp" type="password" autocomplete="current-password" required></div><button class="btn btn-gold btn-block">Login</button><p class="center" style="margin-top:var(--s-3)"><a class="gold-text" href="forgot-password.html">Forgot password?</a></p></form>
+  <form id="up" hidden><div class="field"><label for="sn">Full name</label><input id="sn" autocomplete="name" required></div><div class="field"><label for="se">Email</label><input id="se" type="email" autocomplete="email" required></div><div class="field"><label for="sph">Phone</label><input id="sph" type="tel" autocomplete="tel"></div><div class="field"><label for="sp">Password (min 6 characters)</label><input id="sp" type="password" minlength="6" autocomplete="new-password" required></div><button class="btn btn-gold btn-block">Create account</button></form></div></div>`);
+  const m = (t, c = 'err') => ($('#m').innerHTML = `<div class="form-msg ${c}" role="alert">${UI.esc(t)}</div>`);
+  $$('.tabs button').forEach((b) => b.onclick = () => { $$('.tabs button').forEach((x) => x.classList.toggle('active', x === b)); $('#in').hidden = b.dataset.t !== 'in'; $('#up').hidden = b.dataset.t !== 'up'; $('#m').innerHTML = ''; });
+  const go = (fn) => async (ev) => { ev.preventDefault(); const btn = $('button.btn', ev.target); btn.disabled = true; try { const d = await fn(); await Auth.afterLogin(d); if (d.message && !d.user.emailVerified) UI.toast(d.message); location.href = next; } catch (x) { m(x.message); btn.disabled = false; } };
+  $('#in').addEventListener('submit', go(() => API.post('/auth/login', { email: $('#le').value, password: $('#lp').value })));
+  $('#up').addEventListener('submit', go(() => API.post('/auth/signup', { name: $('#sn').value, email: $('#se').value, phone: $('#sph').value, password: $('#sp').value })));
+})();

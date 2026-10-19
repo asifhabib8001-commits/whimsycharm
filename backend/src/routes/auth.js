@@ -1,0 +1,15 @@
+const router = require("express").Router();
+const c = require('../controllers/auth');
+const { protect } = require('../middleware/auth');
+const { authLimiter } = require('../middleware/rateLimit');
+router.post('/signup', authLimiter, c.signup);
+router.post('/login', authLimiter, c.login);
+router.post('/owner-login', authLimiter, c.ownerLogin);
+router.post('/verify-email', c.verifyEmail);
+router.post('/resend-verification', protect, c.resendVerification);
+router.post('/forgot-password', authLimiter, c.forgotPassword);
+router.post('/reset-password', authLimiter, c.resetPassword);
+router.get('/me', protect, c.me);
+router.put('/profile', protect, c.updateProfile);
+router.put('/change-password', protect, c.changePassword);
+module.exports = router;

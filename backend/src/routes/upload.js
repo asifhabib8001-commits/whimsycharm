@@ -1,0 +1,11 @@
+const router = require("express").Router();
+const multer = require('multer');
+const rateLimit = require('express-rate-limit');
+const c = require('../controllers/upload');
+const { protect, ownerOnly } = require('../middleware/auth');
+const up = multer({ storage: multer.memoryStorage(), limits: { fileSize: 8 * 1024 * 1024 } });
+const uploadLimiter = rateLimit({ windowMs: 60*60*1000, limit: 30, standardHeaders: true, legacyHeaders: false, skip: (req) => req.user && req.user.role === 'owner', message: { message: 'Too many uploads, please try later' } });
+router.post('/', protect, uploadLimiter, up.single('file'), c.upload);
+router.get('/signature', ownerOnly, c.signature);
+router.delete('/', ownerOnly, c.remove);
+module.exports = router;

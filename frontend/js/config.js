@@ -1,0 +1,1 @@
+window.WC_CONFIG = {"API_URL":"http://localhost:5000/api","OWNER_URL":"http://localhost:5501","GA_ID":""};

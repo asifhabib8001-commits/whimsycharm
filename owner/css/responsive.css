@@ -1,0 +1,14 @@
+/* Owner panel — responsive (base mobile hai) */
+@media (min-width:600px){
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .fgrid.two,.fgrid{grid-template-columns:repeat(2,1fr)}.fgrid .full,.fgrid .sec{grid-column:1/-1}
+  .ovl{align-items:center;padding:20px}.mdl{border-radius:16px}.toasts{left:auto;width:360px}
+  .optrow{grid-template-columns:2fr 1fr 2fr 1fr auto;align-items:center}.maprow{grid-template-columns:150px 1fr}
+}
+@media (min-width:900px){
+  .side{transform:none;width:var(--side)}.scrim{display:none}
+  .main{margin-left:var(--side)}.topbar .menu{display:none}.view{padding:24px}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .split{display:grid;grid-template-columns:2fr 1fr;gap:16px;align-items:start}
+}
+@media (min-width:1200px){.stats{grid-template-columns:repeat(5,1fr)}}

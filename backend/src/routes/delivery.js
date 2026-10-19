@@ -1,0 +1,10 @@
+const router = require("express").Router();
+const c = require('../controllers/delivery');
+const { ownerOnly } = require('../middleware/auth');
+router.get('/check/:pincode', c.check);
+router.get('/pincodes', ownerOnly, c.listAll);
+router.post('/pincodes/bulk', ownerOnly, c.bulkAdd);
+router.post('/pincodes', ownerOnly, c.create);
+router.put('/pincodes/:id', ownerOnly, c.update);
+router.delete('/pincodes/:id', ownerOnly, c.remove);
+module.exports = router;

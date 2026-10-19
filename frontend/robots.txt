@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /settings.html
+Disallow: /checkout.html
+Disallow: /profile.html
+# Deploy ke baad niche apna backend/frontend URL daalein:
+# Sitemap: https://YOUR-BACKEND.vercel.app/sitemap.xml

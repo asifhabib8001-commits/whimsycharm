@@ -1,0 +1,24 @@
+/* WhimsyCharm — subtle motion. Sab kuch prefers-reduced-motion ko respect karta hai */
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes toastIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes sheen{0%{transform:translateX(-120%)}100%{transform:translateX(220%)}}
+@keyframes sheetUp{from{transform:translateY(40px);opacity:.5}to{transform:none;opacity:1}}
+.skel,.shimmer{background:linear-gradient(100deg,var(--lav-100) 30%,var(--gold-100) 50%,var(--lav-100) 70%);background-size:200% 100%;animation:shimmer 1.8s linear infinite}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.toast{animation:toastIn .25s var(--ease)}
+.modal{animation:sheetUp .3s var(--ease)}
+.btn-gold{position:relative;overflow:hidden}
+.btn-gold::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:translateX(-120%)}
+.btn-gold:hover::after{animation:sheen .9s var(--ease)}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
+.pcard:hover .pcard-media .img2{opacity:1}
+.pcard:hover .pcard-media img{transform:scale(1.04)}
+.icon-btn,.chip,.wish-btn{transition:background .2s,transform .2s var(--ease)}
+.wish-btn:active{transform:scale(1.2)}
+.page-enter{animation:fadeUp .5s var(--ease)}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
